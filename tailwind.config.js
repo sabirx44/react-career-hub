@@ -14,4 +14,3 @@ export default {
     base: true, // Apply base colors (optional)
   },
 };
-
