@@ -85,7 +85,9 @@ const FeaturedJobs = () => {
 };
 
 export default FeaturedJobs;
+*/
 
+/*
 import React, { useEffect, useState } from "react";
 import Job from "../Job/Job";
 
