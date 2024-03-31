@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getStoredJobApplications } from "../../utility/localStorage";
+import { Helmet } from "react-helmet-async";
 
 const AppliedJobs = () => {
     const jobs = useLoaderData();
@@ -8,14 +9,14 @@ const AppliedJobs = () => {
     const [displayJobs, setDisplayJobs] = useState([]);
 
     const handleJobsFilter = filter => {
-        if(filter === 'all'){
+        if (filter === 'all') {
             setDisplayJobs(appliedJobs);
         }
-        else if(filter === 'remote'){
+        else if (filter === 'remote') {
             const remoteJobs = appliedJobs.filter(job => job.remote_or_onsite === 'Remote');
             setDisplayJobs(remoteJobs);
         }
-        else if(filter === 'onsite'){
+        else if (filter === 'onsite') {
             const onsiteJobs = appliedJobs.filter(job => job.remote_or_onsite === 'Onsite');
             setDisplayJobs(onsiteJobs);
         }
@@ -40,6 +41,9 @@ const AppliedJobs = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>CareerHub | AppliedJobs</title>
+            </Helmet>
             <h2 className="text-2xl">Jobs I applied: {appliedJobs.length}</h2>
             <details className="dropdown">
                 <summary className="m-1 btn">open or close</summary>
@@ -52,7 +56,7 @@ const AppliedJobs = () => {
             <ul>
                 {
                     displayJobs.map(job => <li key={job.id}>
-                        <span>{job.job_title}, {job.company_name}, {job. remote_or_onsite}</span>
+                        <span>{job.job_title}, {job.company_name}, {job.remote_or_onsite}</span>
                     </li>)
                 }
             </ul>
