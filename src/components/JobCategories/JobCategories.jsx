@@ -1,4 +1,3 @@
-
 const JobCategories = () => {
     return (
         <div className="text-center">

@@ -1,8 +1,8 @@
-
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Job = ({ job }) => {
-    const { logo, job_title, company_name, remote_or_onsite, location, salary } = job;
+    const { id, logo, job_title, company_name, remote_or_onsite, location, salary } = job;
     return (
         <div className="card card-compact bg-base-100 border">
             <figure className="p-4"><img src={logo} alt="Shoes" /></figure>
@@ -15,7 +15,9 @@ const Job = ({ job }) => {
                     <div className="inline-flex items-center gap-2"><img src="/src/assets/icons/money2.png" /><span>{salary}</span></div>
                 </div>
                 <div className="card-actions justify-start">
-                    <button className="btn btn-primary">View Details</button>
+                    <Link to={`/job/${id}`}>
+                        <button className="btn btn-primary">View Details</button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -25,6 +27,7 @@ const Job = ({ job }) => {
 // Define prop types for the Job component
 Job.propTypes = {
     job: PropTypes.shape({
+        id: PropTypes.number.isRequired,
         logo: PropTypes.string.isRequired,
         job_title: PropTypes.string.isRequired,
         company_name: PropTypes.string.isRequired,
